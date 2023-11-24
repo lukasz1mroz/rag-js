@@ -12,7 +12,7 @@ const loadFile = async (filePath: string): Promise<any> => {
   }
 }
 
-const splitDocs = async (docs: any[]): Promise<any> => {
+const splitFile = async (docs: any[]): Promise<any> => {
   try {
     const splitter = new RecursiveCharacterTextSplitter({
       chunkSize: config.recursiveSplitter.chunkSize,
