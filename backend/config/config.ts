@@ -4,6 +4,13 @@ export const config: any = {
     chunkOverlap: 10,
   },
   redis: {
-    url: 'test',
+    url: 'todo',
+  },
+  azure: {
+    azureOpenAIApiVersion: 'todo',
+    azureOpenAIApiKey: 'todo',
+    azureOpenAIApiInstanceName: 'todo',
+    azureOpenAIApiDeploymentName: 'todo',
+    azureOpenAIApiEmbeddingsDeploymentName: 'todo',
   },
 }
