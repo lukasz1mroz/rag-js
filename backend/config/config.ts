@@ -5,6 +5,7 @@ export const config: any = {
   },
   redis: {
     url: 'todo',
+    temporary: 1000,
   },
   azure: {
     azureOpenAIApiVersion: 'todo',
