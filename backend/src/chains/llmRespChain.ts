@@ -1,9 +1,9 @@
 import {RunnablePassthrough, RunnableSequence} from 'langchain/schema/runnable'
 import {formatDocumentsAsString} from 'langchain/util/document'
 import {StringOutputParser} from 'langchain/schema/output_parser'
-import {queryRedisVectorStore} from '../utils/storeHandler'
-import {ragFinalPrompt} from '../utils/queryHandler'
-import {llm} from '../utils/azureHandler'
+import {queryRedisVectorStore} from '../utils/storeHandler.js'
+import {ragFinalPrompt} from '../utils/queryHandler.js'
+import {llm} from '../utils/azureHandler.js'
 
 export const getLlmRespChain = RunnableSequence.from([
   {

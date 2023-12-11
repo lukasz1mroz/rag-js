@@ -1,6 +1,6 @@
 import {OpenAI} from 'langchain/llms/openai'
 import {OpenAIEmbeddings} from 'langchain/embeddings/openai'
-import {config} from '../../config/config'
+import {config} from '../config/config.js'
 
 const {
   azureOpenAIApiVersion,

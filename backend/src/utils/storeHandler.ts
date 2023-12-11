@@ -1,8 +1,8 @@
 import {createClient} from 'redis'
 import {RedisVectorStore} from 'langchain/vectorstores/redis'
-import {Document} from 'langchain/dist/document'
-import {embeddings} from './azureHandler'
-import {config} from '../../config/config'
+import {Document} from 'langchain/document'
+import {embeddings} from './azureHandler.js'
+import {config} from '../config/config.js'
 
 export const startRedis = async () =>
   await createClient({

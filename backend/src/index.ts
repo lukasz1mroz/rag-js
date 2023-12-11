@@ -1,5 +1,5 @@
 //import {getLlmRespChain} from './src/chains/llmRespChain'
-import {loadFileChain} from './chains/loadFileChain'
+import {loadFileChain} from './chains/loadFileChain.js'
 
 const main = async (question: string, fileUrl: string): Promise<any> => {
   // Chunk the file and upload to Redis vector store

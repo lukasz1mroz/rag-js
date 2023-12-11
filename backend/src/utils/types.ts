@@ -1,4 +1,4 @@
-import {Document} from 'langchain/dist/document'
+import {Document} from 'langchain/document'
 
 export type PreparedFile = {
   fileName: string
