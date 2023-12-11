@@ -1,20 +1,7 @@
 {
-    "compilerOptions": {
-      "allowJs": true,
-      "sourceMap": true,
-      "noImplicitAny": true, 
-      "strictPropertyInitialization": true,
-      "strictNullChecks": true,
-      "importHelpers": true,
-      "resolveJsonModule": true,
-      "baseUrl": "./",
-      "noEmit": true,
-      "noUnusedLocals": true,
-      "allowSyntheticDefaultImports": true,
-      "paths": {
-        "~/*": ["./*"]
-      },
-      "typeRoots": ["./types", "./node_modules/@types"]
-    }
-  }
-  
+  "extends": "@tsconfig/node21/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+  },
+}

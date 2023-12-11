@@ -5,12 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build-test": "npx tsc && cp -r src/sample-logs dist/sample-logs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "langchain": "^0.0.197-rc.1",
+    "langchain": "^0.0.197",
     "redis": "^4.6.11",
     "tslib": "^2.6.2"
   },
