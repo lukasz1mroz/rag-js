@@ -46,3 +46,6 @@ parameter_store.json
 **/.terraform/plugins/darwin_amd64/
 **/.terraform/plugins/linux_amd64/
 **/.terraform/plugins/registry.terraform.io/
+
+#code specific
+backend/src/sample-logs/*
