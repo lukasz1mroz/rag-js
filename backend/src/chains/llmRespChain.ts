@@ -12,7 +12,6 @@ export const getLlmRespChain = RunnableSequence.from([
   },
   {
     context: formatDocumentsAsString,
-    question: ({originalInput}) => originalInput.question,
   },
   ragFinalPrompt,
   llm,
