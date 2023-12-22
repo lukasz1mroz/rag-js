@@ -1,7 +1,6 @@
 import {TextLoader} from 'langchain/document_loaders/fs/text'
 import {RecursiveCharacterTextSplitter} from 'langchain/text_splitter'
-import {RunnableSequence} from 'langchain/schema/runnable'
-import {Document} from 'langchain/document'
+import {RunnablePassthrough, RunnableSequence} from 'langchain/schema/runnable'
 import {config} from '../config/config.js'
 import {loadRedisVectorStore} from '../utils/storeHandler.js'
 
@@ -12,18 +11,14 @@ const splitter = new RecursiveCharacterTextSplitter({
 
 export const loadFileChain = RunnableSequence.from([
   {
-    log1: (filePath: string) => console.log(`Loading file ${filePath}`),
     loadedDocs: async (filePath: string) => await new TextLoader(filePath).load(),
-    log2: (loadedDocs) => console.log('Loaded docs: ', loadedDocs),
-    filePath: (filePath: string) => filePath,
+    filePath: new RunnablePassthrough(),
   },
   {
-    indexName: (filePath) => filePath.split('/').pop()?.split('.')[0] ?? filePath,
-    log1: (indexName: string) => console.log(`Created index name: ${indexName}`),
-    splittedDocs: async (loadedDocs: Document<Record<string, any>>[]) => await splitter.splitDocuments(loadedDocs),
-    log2: (splittedDocs) => console.log('Splitted docs: ', splittedDocs),
+    indexName: (prev) => prev.filePath.split('/').pop()?.split('.')[0] ?? prev.filePath,
+    splittedDocs: async (prev) => await splitter.splitDocuments(prev.loadedDocs),
   },
   {
-    loadVectorResp: async ({indexName, splittedDocs}) => await loadRedisVectorStore(indexName, splittedDocs),
+    loadVectorResp: (prev) => loadRedisVectorStore(prev.indexName, prev.splittedDocs),
   },
 ])
