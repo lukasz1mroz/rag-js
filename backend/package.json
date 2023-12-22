@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build-test": "npx tsc && cp -r src/sample-logs dist/sample-logs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-redis": "docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest"
   },
   "author": "",
   "license": "ISC",
