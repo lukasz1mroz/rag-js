@@ -15,15 +15,15 @@ export const loadRedisVectorStore = async (
   indexName: string,
   splittedDocs: Document<Record<string, any>>[],
 ): Promise<RedisVectorStore> => {
-  const client = await startRedis()
+  const redisClient = await startRedis()
   const response = await RedisVectorStore.fromDocuments(splittedDocs, embeddings, {
-    redisClient: client,
+    redisClient,
     indexName,
     createIndexOptions: {
       TEMPORARY: config.redis.temporary ?? false,
     },
   })
-  await client.disconnect()
+  await redisClient.quit()
   return response
 }
 
@@ -31,13 +31,13 @@ export const queryRedisVectorStore = async (
   indexName: string,
   query: string,
 ): Promise<Document<Record<string, any>>[]> => {
-  const client = await startRedis()
+  const redisClient = await startRedis()
   const vectorStoreRetriever = new RedisVectorStore(embeddings, {
-    redisClient: client,
+    redisClient,
     indexName,
   }).asRetriever()
 
   const response = await vectorStoreRetriever.invoke(query)
-  await client.disconnect()
+  await redisClient.quit()
   return response
 }
