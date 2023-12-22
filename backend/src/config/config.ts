@@ -4,7 +4,7 @@ export const config: any = {
     chunkOverlap: 10,
   },
   redis: {
-    url: 'todo',
+    url: 'redis://localhost:6379',
     temporary: 1000,
   },
   azure: {
