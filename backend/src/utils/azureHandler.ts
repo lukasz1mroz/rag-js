@@ -1,26 +1,19 @@
-import {OpenAI} from 'langchain/llms/openai'
-import {OpenAIEmbeddings} from 'langchain/embeddings/openai'
+// import {OpenAI} from 'langchain/llms/openai'
+import {OpenAI, OpenAIEmbeddings} from '@langchain/openai'
 import {config} from '../config/config.js'
 
-const {
-  azureOpenAIApiVersion,
-  azureOpenAIApiKey,
-  azureOpenAIApiEmbeddingsDeploymentName,
-  azureOpenAIApiInstanceName,
-  azureOpenAIApiDeploymentName,
-} = config.azure
+const {apiVersion, apiKey, baseUrl, model} = config.api
 
-export const llm = new OpenAI({
-  azureOpenAIApiVersion: azureOpenAIApiVersion,
-  azureOpenAIApiKey: azureOpenAIApiKey,
-  azureOpenAIApiInstanceName: azureOpenAIApiInstanceName,
-  azureOpenAIApiDeploymentName: azureOpenAIApiDeploymentName,
-})
+// export const llm = new OpenAI({
+//   azureOpenAIApiVersion: azureOpenAIApiVersion,
+//   azureOpenAIApiKey: azureOpenAIApiKey,
+//   azureOpenAIApiInstanceName: azureOpenAIApiInstanceName,
+//   azureOpenAIApiDeploymentName: azureOpenAIApiDeploymentName,
+// })
 
 export const embeddings = new OpenAIEmbeddings({
-  azureOpenAIApiVersion: azureOpenAIApiVersion,
-  azureOpenAIApiKey: azureOpenAIApiKey,
-  azureOpenAIApiInstanceName: azureOpenAIApiInstanceName,
-  azureOpenAIApiDeploymentName: azureOpenAIApiDeploymentName,
-  azureOpenAIApiEmbeddingsDeploymentName: azureOpenAIApiEmbeddingsDeploymentName,
+  azureOpenAIApiKey: apiKey,
+  azureOpenAIApiVersion: apiVersion,
+  azureOpenAIApiDeploymentName: model,
+  azureOpenAIBasePath: baseUrl,
 })
