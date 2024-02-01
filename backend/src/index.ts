@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import {loadFileChain} from './loadFileChain.js'
 import {questionChain} from './questionChain.js'
 
