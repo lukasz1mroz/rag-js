@@ -4,7 +4,6 @@ import {Document} from 'langchain/document'
 import {embeddings} from './azureHandler.js'
 import {config} from '../config/config.js'
 
-// Check in memory store performance
 export const startRedis = async () =>
   await createClient({
     url: config.redis.url ?? 'redis://localhost:6379',

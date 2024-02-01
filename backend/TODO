@@ -1,0 +1,8 @@
+// Check Summarization workflow
+// Tweak propmpt: consider example, get repetitive descriptive results
+// Check performance providing full log
+// Check in memory store performance
+// What is the analysis scope eg. errors, traffic, timeframe?
+// What is the optimal data structure for logs?
+// How to standardize log analysis without knowing the structure?
+// What is normal in logs, what is anomaly?
