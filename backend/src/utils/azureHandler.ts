@@ -1,19 +1,19 @@
-// import {OpenAI} from 'langchain/llms/openai'
-import {OpenAI, OpenAIEmbeddings} from '@langchain/openai'
+import {ChatOpenAI, OpenAIEmbeddings} from '@langchain/openai'
 import {config} from '../config/config.js'
 
-const {apiVersion, apiKey, baseUrl, model} = config.api
-
-// export const llm = new OpenAI({
-//   azureOpenAIApiVersion: azureOpenAIApiVersion,
-//   azureOpenAIApiKey: azureOpenAIApiKey,
-//   azureOpenAIApiInstanceName: azureOpenAIApiInstanceName,
-//   azureOpenAIApiDeploymentName: azureOpenAIApiDeploymentName,
-// })
+const {apiVersion, apiKey, baseUrl, completionsModel, embeddingsModel} = config.api
 
 export const embeddings = new OpenAIEmbeddings({
   azureOpenAIApiKey: apiKey,
   azureOpenAIApiVersion: apiVersion,
-  azureOpenAIApiDeploymentName: model,
+  azureOpenAIApiDeploymentName: embeddingsModel,
   azureOpenAIBasePath: baseUrl,
+})
+
+export const llm = new ChatOpenAI({
+  azureOpenAIApiKey: apiKey,
+  azureOpenAIApiVersion: apiVersion,
+  azureOpenAIApiDeploymentName: completionsModel,
+  azureOpenAIBasePath: baseUrl,
+  temperature: 0.1,
 })
