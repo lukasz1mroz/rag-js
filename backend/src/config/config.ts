@@ -1,17 +1,13 @@
 export const config: any = {
-  recursiveSplitter: {
-    chunkSize: 1000,
-    chunkOverlap: 10,
-  },
   redis: {
-    url: 'redis://localhost:6379',
+    url: process.env.REDIS_URL,
     temporary: 1000,
   },
-  azure: {
-    azureOpenAIApiVersion: 'todo',
-    azureOpenAIApiKey: 'todo',
-    azureOpenAIApiInstanceName: 'todo',
-    azureOpenAIApiDeploymentName: 'todo',
-    azureOpenAIApiEmbeddingsDeploymentName: 'todo',
+  api: {
+    apiVersion: process.env.API_VERSION,
+    apiKey: process.env.API_KEY,
+    baseUrl: process.env.BASE_URL,
+    embeddingsModel: process.env.EMBEDDINGS_MODEL,
+    completionsModel: process.env.COMPLETIONS_MODEL,
   },
 }
