@@ -1,6 +1,8 @@
-import {ragChain} from './ragChain.js'
+import {loadFileChain} from './loadFileChain.js'
+import {questionChain} from './questionChain.js'
 
-await ragChain.invoke({
-  filePath: '/Users/mrozl/Documents/Code/Exercises/rag-js/backend/src/sample-logs/log-sample-1.log',
-  question: 'What is the error?',
+await loadFileChain.invoke('/Users/mrozl/Documents/Code/Exercises/rag-js/backend/src/sample-logs/single-err-log.log')
+await questionChain.invoke({
+  filePath: '/Users/mrozl/Documents/Code/Exercises/rag-js/backend/src/sample-logs/single-err-log.log',
+  question: 'What are the errors?',
 })
